@@ -12,7 +12,7 @@ During the capture session, I identified several primary traffic types. Monitori
 * **TLS (Transport Layer Security):** Confirmed encrypted web browsing sessions, verifying data privacy during transit.
 * **TCP/UDP:** Analyzed the differences between connection-oriented (TCP) and connectionless (UDP) data transfers.
 
-![Main Wireshark Traffic Capture](images/traffic_capture.png)
+![Main Wireshark Traffic Capture](traffic_capture.png)
 
 ---
 
@@ -21,7 +21,7 @@ I focused specifically on the DNS protocol to observe name resolution in real-ti
 * **Observation:** Captured the "Standard query" for a domain and the "Standard query response" containing the IP address.
 * **Analysis:** Verified that the laptop correctly communicated with the DNS server to resolve hostnames before initiating TCP connections.
 
-![DNS Packet Detail](images/dns_analysis.png)
+![DNS Packet Detail](dns_analysis.png)
 
 ---
 
