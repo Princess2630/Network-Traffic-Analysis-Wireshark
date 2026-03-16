@@ -1,43 +1,46 @@
 # Network Traffic Monitoring & Protocol Analysis
 
 ## Project Overview
-This project focused on using **Wireshark** to capture, analyze, and interpret real-time network traffic. The goal was to understand protocol behavior, identify traffic patterns (TCP, TLS, DNS), and verify security best practices within a network environment.
+This project demonstrates the use of **Wireshark** to capture and analyze real-time network traffic. By inspecting packet-level data, I validated protocol behaviors for DNS, TCP, and TLS, ensuring a deep understanding of how data moves across a network and how to identify potential security anomalies.
 
 ---
 
-## Technical Skills Demonstrated
-* **Packet Capture:** Utilized Wireshark and TCPdump to monitor live network interfaces.
-* **Protocol Analysis:** Inspected the **TCP 3-Way Handshake** and validated encrypted **TLS** sessions.
-* **Traffic Identification:** Analyzed DNS queries and response times to troubleshoot name resolution.
-* **Security Hardening:** Correlated packet-level data with security events like firewall blocks and connection resets.
+## 1. Traffic Identification
+During the capture session, I identified several primary traffic types. Monitoring these protocols in action helped clarify how applications communicate over a network.
+
+* **DNS (Domain Name System):** Analyzed queries from my laptop requesting website IP addresses and the corresponding server responses.
+* **TLS (Transport Layer Security):** Confirmed encrypted web browsing sessions, verifying data privacy during transit.
+* **TCP/UDP:** Analyzed the differences between connection-oriented (TCP) and connectionless (UDP) data transfers.
+
+![Main Wireshark Traffic Capture](images/traffic_capture.png)
 
 ---
 
-## Analysis Workflow
+## 2. DNS Query & Response Analysis
+I focused specifically on the DNS protocol to observe name resolution in real-time. 
+* **Observation:** Captured the "Standard query" for a domain and the "Standard query response" containing the IP address.
+* **Analysis:** Verified that the laptop correctly communicated with the DNS server to resolve hostnames before initiating TCP connections.
 
-### 1. Protocol Identification
-Captured and filtered various traffic types to understand application communication:
-* **TCP:** Observed reliable data transmission and session management.
-* **TLS:** Verified encrypted web browsing sessions to ensure data privacy.
-* **DNS:** Monitored domain name resolution requests from the local machine to external servers.
+![DNS Packet Detail](images/dns_analysis.png)
 
-![Wireshark Traffic Capture](images/traffic_capture.png)
+---
 
-### 2. Connection Analysis (TCP Handshake)
-Documented the standard 3-way handshake process:
-1. **SYN:** Client request to synchronize.
-2. **SYN-ACK:** Server acknowledgment of the request.
-3. **ACK:** Final connection establishment.
+## 3. TCP 3-Way Handshake
+I manually inspected the connection establishment process to verify network reliability:
+1.  **SYN:** Initial synchronization request from the client.
+2.  **SYN-ACK:** Acknowledgment from the server.
+3.  **ACK:** Final acknowledgment to establish the connection.
 
-### 3. Security Reflection & Best Practices
-Based on the traffic analysis, I documented the necessity for:
-* **Intrusion Detection Systems (IDS/IPS):** To automate the detection of malicious patterns identified during manual analysis.
-* **Network Segmentation:** Using VLANs and ACLs to minimize the attack surface.
-* **Encryption:** Ensuring all sensitive traffic is wrapped in TLS to prevent man-in-the-middle (MITM) attacks.
+---
+
+## 4. Security Best Practices & Reflection
+Based on the traffic analysis, I documented the following hardening requirements for organizational networks:
+* **Encryption:** Enforcing TLS 1.2+ to prevent packet sniffing and Man-in-the-Middle (MITM) attacks.
+* **Network Segmentation:** Utilizing VLANs and ACLs to limit the attack surface.
+* **Monitoring:** Implementing IDS/IPS and SIEM systems for centralized logging and alert correlation.
 
 ---
 
 ## Tools Used
-* **Wireshark:** Deep packet inspection and protocol analysis.
-* **Linux (Ubuntu):** Host environment for traffic generation.
-* **Docker:** Used to simulate service-based traffic.
+* **Wireshark:** Deep Packet Inspection (DPI) and protocol analysis.
+* **Linux (Ubuntu):** Environment used for generating and capturing network traffic.
